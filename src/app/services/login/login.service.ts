@@ -22,7 +22,7 @@ export class LoginService {
       }
     }).pipe(map( (responseData: Credentials) => {
       console.log(responseData)
-      localStorage.setItem("jwt", responseData.JWT)
+      localStorage.setItem("jwt", responseData.jwt)
       localStorage.setItem("usrnme", responseData.username)
     }))
   } 
