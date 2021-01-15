@@ -1,18 +1,13 @@
 <header>
     <nav class="navbar navbar-expand-md" id="navbar">
-      <div class="container"><!--
-        <div class="nav-toggler" id="nav-toggler">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>-->
+      <div class="container">
         <a class="navbar-brand override" routerLink="/">
             Plane Tickets
         </a>
         <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">LogOut</a></li>
+          <li><button disabled type="button" class="btn btn-light">{{user.username}} role_{{user.userType}}</button></li>
+          <!--<li><button type="button" class="btn btn-light" routerLink="">Home</button></li>-->
+          <li><button type="button" class="btn btn-light" onclick="logout()">LogOut</button></li>
         </ul>
       </div>
     </nav>

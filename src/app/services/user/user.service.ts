@@ -18,10 +18,9 @@ export class UserService {
   }
 
   public fetchUsers(): Observable<User[]> {
-    this.users = this.http.get<User[]>(this.usersUrl, {
-      params: {},
+    this.users = this.http.get<User[]>(this.usersUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class UserService {
   public removeUser(id): Observable<{}> {
     return this.http.delete(this.usersUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

@@ -18,10 +18,9 @@ export class TicketService {
   }
 
   public fetchTickets(): Observable<Ticket[]> {
-    this.tickets = this.http.get<Ticket[]>(this.ticketsUrl, {
-      params: {},
+    this.tickets = this.http.get<Ticket[]>(this.ticketsUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class TicketService {
   public removeTicket(id): Observable<{}> {
     return this.http.delete(this.ticketsUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

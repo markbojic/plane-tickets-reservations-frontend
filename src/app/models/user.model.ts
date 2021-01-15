@@ -4,6 +4,6 @@ import { Reservation } from './reservation.model';
 export interface User {
     id: number
     username: string
-    type: UserType
+    userType: UserType
     bookings: Reservation[]
 }

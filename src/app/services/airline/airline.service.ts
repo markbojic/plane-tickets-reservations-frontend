@@ -18,10 +18,9 @@ export class AirlineService {
   }
 
   public fatchAirlines(): Observable<Airline[]> {
-    this.airlines = this.http.get<Airline[]>(this.airlinesUrl, {
-      params: {},
+    this.airlines = this.http.get<Airline[]>(this.airlinesUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class AirlineService {
   public removeAirline(id): Observable<{}> {
     return this.http.delete(this.airlinesUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

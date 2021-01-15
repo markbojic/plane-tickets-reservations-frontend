@@ -18,10 +18,9 @@ export class ReservationService {
   }
 
   public fetchReservations(): Observable<Reservation[]> {
-    this.reservations = this.http.get<Reservation[]>(this.reservationsUrl, {
-      params: {},
+    this.reservations = this.http.get<Reservation[]>(this.reservationsUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class ReservationService {
   public removeReservation(id): Observable<{}> {
     return this.http.delete(this.reservationsUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

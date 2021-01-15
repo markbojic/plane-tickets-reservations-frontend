@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +10,20 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   navElement: HTMLElement = null;
+  public user: User
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.fetchUsers().subscribe(users => {
+      for(let i=0 ; i < users.length ; i++) {
+        if(users[i].username === localStorage.getItem("usrnme")) {
+          this.user = users[i];
+          //console.log(this.user.username + ' ' + this.user.userType);
+        }
+      }
+    })
+  }
 
   ngAfterViewInit() {
     this.navElement = <HTMLElement> document.getElementById("navbar");

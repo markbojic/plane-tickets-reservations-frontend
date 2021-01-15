@@ -18,10 +18,9 @@ export class FlightService {
   }
 
   public fetchFlights(): Observable<Flight[]> {
-    this.flights = this.http.get<Flight[]>(this.flightsUrl, {
-      params: {},
+    this.flights = this.http.get<Flight[]>(this.flightsUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class FlightService {
   public removeFlight(id): Observable<{}> {
     return this.http.delete(this.flightsUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

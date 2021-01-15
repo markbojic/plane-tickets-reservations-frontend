@@ -14,13 +14,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from '../app/auth.guard';
+import { TicketstableComponent } from './components/ticketstable/ticketstable.component';
+import { EditticketComponent } from './components/editticket/editticket.component';
+import { AdduserComponent } from './components/adduser/adduser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    TicketstableComponent,
+    EditticketComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,

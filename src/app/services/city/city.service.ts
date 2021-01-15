@@ -18,10 +18,9 @@ export class CityService {
   }
 
   public fetchCities(): Observable<City[]> {
-    this.cities = this.http.get<City[]>(this.citiesUrl, {
-      params: {},
+    this.cities = this.http.get<City[]>(this.citiesUrl + '/all', {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
 
@@ -31,7 +30,7 @@ export class CityService {
   public removeCity(id): Observable<{}> {
     return this.http.delete(this.citiesUrl + '/' + id, {
       headers: {
-        Authorization: "Bearer" + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt")
       }
     })
   }

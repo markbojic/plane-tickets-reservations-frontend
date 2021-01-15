@@ -1,0 +1,41 @@
+<div class="form-check form-check-inline">
+    <input (click)="filterAll()" class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="option1" checked>
+    <label class="form-check-label" for="radio1">All Tickets</label>
+</div>
+<div class="form-check form-check-inline">
+    <input (click)="filterOneWay()" class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2">
+    <label class="form-check-label" for="radio2">One Way Only</label>
+</div>
+<div class="form-check form-check-inline">
+    <input (click)="filterReturn()" class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="option3">
+    <label class="form-check-label" for="radio3">Return Only</label>
+</div>
+
+<table class="table table-bordred table-striped">
+                   
+    <thead>
+        <th>Company</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>One Way</th>
+        <th>Depart</th>
+        <th>Return</th>
+        <th>Count</th>
+        <th>Edit</th>   
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ticket of tickets">
+            <td>{{ticket.airline.name}}</td>
+            <td>{{ticket.flight.origin.name}}</td>
+            <td>{{ticket.flight.destination.name}}</td>
+            <td>{{ticket.oneWay}}</td>
+            <td>{{ticket.departOn}}</td>
+            <td>{{ticket.returnOn}}</td>
+            <td>{{ticket.count}}</td>
+            <td><button [routerLink]="['ticket/edit/', ticket.id]" class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="font-size:16px;"></i></button></td>
+            <td><button (click)="remove(ticket.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash" style="font-size:16px;"></i></button></td>
+        </tr>
+    </tbody>
+
+</table>
