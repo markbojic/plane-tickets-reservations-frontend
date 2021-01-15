@@ -7,6 +7,7 @@
         <ul class="nav navbar-nav">
           <li><button disabled type="button" class="btn btn-light">{{user.username}} role_{{user.userType}}</button></li>
           <!--<li><button type="button" class="btn btn-light" routerLink="">Home</button></li>-->
+          <li *ngIf="!isAdmin" type="button" class="btn btn-light" (click)="rsrv()" ><i class="fa fa-plane" style="font-size:20px;"></i><button></button></li>
           <li><button type="button" class="btn btn-light" onclick="logout()">LogOut</button></li>
         </ul>
       </div>

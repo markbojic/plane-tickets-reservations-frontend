@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ticket } from 'src/app/models/ticket.model';
 import { TicketService } from 'src/app/services/ticket/ticket.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-editticket',
@@ -13,11 +15,13 @@ export class EditticketComponent implements OnInit {
 
   public ticket: Ticket
   public editForm: FormGroup
+  public user: User
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private ticketService: TicketService
+              private ticketService: TicketService,
+              private userService: UserService
   ) {
     this.editForm = this.formBuilder.group({
       id: [''],
@@ -37,6 +41,16 @@ export class EditticketComponent implements OnInit {
       this.ticketService.getTickets().subscribe((tickets: Ticket[]) => {
         this.ticket = tickets.filter(ticket => ticket.id === id)[0]
       })
+    })
+
+    this.userService.fetchUsers().subscribe(users => {
+      this.user = users.filter(user => user.username === localStorage.getItem('usrnme'))[0]
+      if (this.user.userType.toString() === "ADMIN") {
+        console.log('ok')
+      } else {
+        alert('ONLY ADMIN CAN EDIT TICKETS!')
+        this.router.navigate([''])
+      }
     })
   }
 

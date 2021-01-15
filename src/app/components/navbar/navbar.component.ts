@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   navElement: HTMLElement = null;
   public user: User
+  public isAdmin: boolean
 
   constructor(private userService: UserService) { }
 
@@ -20,6 +21,11 @@ export class NavbarComponent implements OnInit {
         if(users[i].username === localStorage.getItem("usrnme")) {
           this.user = users[i];
           //console.log(this.user.username + ' ' + this.user.userType);
+          if (this.user.userType.toString() === "ADMIN") {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
         }
       }
     })
@@ -44,6 +50,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.navElement.classList.remove("navbar-shadow");
     }
+  }
+
+  public rsrv() {
+    alert('COOMING SOON')
   }
 
 }

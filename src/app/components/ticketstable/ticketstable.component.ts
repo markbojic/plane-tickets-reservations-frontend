@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/models/ticket.model';
 import { TicketService } from 'src/app/services/ticket/ticket.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-ticketstable',
@@ -10,12 +12,25 @@ import { TicketService } from 'src/app/services/ticket/ticket.service';
 export class TicketstableComponent implements OnInit {
 
   public tickets: Ticket[]
+  public isAdmin: boolean
+  public user: User
 
-  constructor(private ticketService: TicketService) { }
+  constructor(private ticketService: TicketService,
+              private userService: UserService
+              ) { }
 
   ngOnInit(): void {
     this.ticketService.fetchTickets().subscribe(tickets => {
       this.tickets = tickets;
+    })
+
+    this.userService.fetchUsers().subscribe(users => {
+      this.user = users.filter(user => user.username === localStorage.getItem('usrnme'))[0]
+      if (this.user.userType.toString() === "ADMIN") {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
     })
   }
 
@@ -48,6 +63,10 @@ export class TicketstableComponent implements OnInit {
     this.ticketService.fetchTickets().subscribe(tickets => {
       this.tickets = tickets;
     })
+  }
+
+  public rsrv(id) {
+    alert('YOU RESERVED TICKET')
   }
 
 }

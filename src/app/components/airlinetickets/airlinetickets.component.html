@@ -12,30 +12,58 @@
 </div>
 
 <table class="table table-bordred table-striped">
-                   
-    <thead>
-        <th>Company</th>
-        <th>Origin</th>
-        <th>Destination</th>
-        <th>One Way</th>
-        <th>Depart</th>
-        <th>Return</th>
-        <th>Count</th>
-        <th>Edit</th>   
-        <th>Delete</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let ticket of tickets">
-            <td>{{ticket.airline.name}}</td>
-            <td>{{ticket.flight.origin.name}}</td>
-            <td>{{ticket.flight.destination.name}}</td>
-            <td>{{ticket.oneWay}}</td>
-            <td>{{ticket.departOn}}</td>
-            <td>{{ticket.returnOn}}</td>
-            <td>{{ticket.count}}</td>
-            <td><button (click)="editTicket(ticket.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="font-size:16px;"></i></button></td>
-            <td><button (click)="removeTicket(ticket.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash" style="font-size:16px;"></i></button></td>
-        </tr>
-    </tbody>
+    <div *ngIf="isAdmin">
+        <thead>
+            <th>Company</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>One Way</th>
+            <th>Depart</th>
+            <th>Return</th>
+            <th>Count</th>
+            <th>Edit</th>   
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.airline.name}}</td>
+                <td>{{ticket.flight.origin.name}}</td>
+                <td>{{ticket.flight.destination.name}}</td>
+                <td>{{ticket.oneWay}}</td>
+                <td>{{ticket.departOn}}</td>
+                <td>{{ticket.returnOn}}</td>
+                <td>{{ticket.count}}</td>
+                <td><button (click)="editTicket(ticket.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="font-size:16px;"></i></button></td>
+                <td><button (click)="removeTicket(ticket.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash" style="font-size:16px;"></i></button></td>
+            </tr>
+        </tbody>
+    </div>
+    <div *ngIf="!isAdmin">
+        <thead>
+            <th>Company</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>One Way</th>
+            <th>Depart</th>
+            <th>Return</th>
+            <th>Count</th>
+            <th>Reserve</th>
+            <th>Num?</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.airline.name}}</td>
+                <td>{{ticket.flight.origin.name}}</td>
+                <td>{{ticket.flight.destination.name}}</td>
+                <td>{{ticket.oneWay}}</td>
+                <td>{{ticket.departOn}}</td>
+                <td>{{ticket.returnOn}}</td>
+                <td>{{ticket.count}}</td>
+                <td><button class="btn btn-success btn-xs"><i class="fa fa-plus" style="font-size:16px;"></i></button></td>
+                <td><input type="number" style="max-width: 50px;"></td>
+            </tr>
+        </tbody>
+    </div>   
+    
 
 </table>

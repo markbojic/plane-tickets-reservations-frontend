@@ -15,9 +15,10 @@ export class EditairlineComponent implements OnInit {
   public editAirlineForm: FormGroup
 
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private airlineService: AirlineService) {
+              private airlineService: AirlineService
+              ) {
                 this.editAirlineForm = this.formBuilder.group({
                   id: [''],
                   name: ['', Validators.required]
@@ -33,6 +34,7 @@ export class EditairlineComponent implements OnInit {
         console.log(this.airline)
       })
     })
+
   }
 
   public get id() {

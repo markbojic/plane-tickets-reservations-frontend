@@ -2,5 +2,7 @@
 <app-navbar class="nav-bar"></app-navbar>
 <div class="content">
     <app-ticketstable></app-ticketstable>
-    <app-adduser></app-adduser>
+    <div *ngIf="isAdmin">
+        <app-adduser></app-adduser>
+    </div>
 </div>
