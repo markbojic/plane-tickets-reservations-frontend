@@ -17,6 +17,10 @@ import { AuthGuard } from '../app/auth.guard';
 import { TicketstableComponent } from './components/ticketstable/ticketstable.component';
 import { EditticketComponent } from './components/editticket/editticket.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
+import { NewairlineComponent } from './components/newairline/newairline.component';
+import { EditairlineComponent } from './components/editairline/editairline.component';
+import { AirlineinfoComponent } from './components/airlineinfo/airlineinfo.component';
+import { AirlineticketsComponent } from './components/airlinetickets/airlinetickets.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { AdduserComponent } from './components/adduser/adduser.component';
     NavbarComponent,
     TicketstableComponent,
     EditticketComponent,
-    AdduserComponent
+    AdduserComponent,
+    NewairlineComponent,
+    EditairlineComponent,
+    AirlineinfoComponent,
+    AirlineticketsComponent
   ],
   imports: [
     BrowserModule,

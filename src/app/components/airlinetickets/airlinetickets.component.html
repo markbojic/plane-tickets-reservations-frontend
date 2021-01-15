@@ -26,15 +26,15 @@
     </thead>
     <tbody>
         <tr *ngFor="let ticket of tickets">
-            <td><a [routerLink]="['airline/', ticket.airline.id]">{{ticket.airline.name}}</a></td>
+            <td>{{ticket.airline.name}}</td>
             <td>{{ticket.flight.origin.name}}</td>
             <td>{{ticket.flight.destination.name}}</td>
             <td>{{ticket.oneWay}}</td>
             <td>{{ticket.departOn}}</td>
             <td>{{ticket.returnOn}}</td>
             <td>{{ticket.count}}</td>
-            <td><button [routerLink]="['ticket/edit/', ticket.id]" class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="font-size:16px;"></i></button></td>
-            <td><button (click)="remove(ticket.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash" style="font-size:16px;"></i></button></td>
+            <td><button (click)="editTicket(ticket.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="font-size:16px;"></i></button></td>
+            <td><button (click)="removeTicket(ticket.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash" style="font-size:16px;"></i></button></td>
         </tr>
     </tbody>
 

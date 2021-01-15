@@ -35,7 +35,7 @@ export class AirlineService {
     })
   }
 
-  public updateAirlines(prmts): Observable<{}> {
+  public updateAirline(prmts): Observable<{}> {
     var body = JSON.stringify(prmts)
     return this.http.put(this.airlinesUrl, body, {
       headers: {
@@ -45,7 +45,7 @@ export class AirlineService {
     })
   }
 
-  public addAirlines(airline): Observable<{}> {
+  public addAirline(airline): Observable<{}> {
     var body = JSON.stringify(airline)
     return this.http.post(this.airlinesUrl, body, {
       headers: {
