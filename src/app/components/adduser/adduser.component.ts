@@ -40,11 +40,22 @@ export class AdduserComponent implements OnInit {
   }
 
   public submitForm(credentials) {
-    var usr = {id: 0, username: credentials.username, password: credentials.password, userType: credentials.type, bookings: null};
-    this.userService.addUser(usr).subscribe()
-    this.newuserForm.get('username').setValue('')
-    this.newuserForm.get('password').setValue('')
-    this.newuserForm.get('type').setValue('')
+    var isOk: boolean = true
+    this.userService.fetchUsers().subscribe(users => {
+      users.forEach(user => {
+        if (user.username === credentials.username) {
+          alert('USER WITH GIVEN USERNAME ALREADY EXISTS')
+          isOk = false;
+        }
+      });
+      if (isOk) {
+        var usr = {id: 0, username: credentials.username, password: credentials.password, userType: credentials.type, bookings: null};
+        this.userService.addUser(usr).subscribe()
+        this.newuserForm.get('username').setValue('')
+        this.newuserForm.get('password').setValue('')
+        this.newuserForm.get('type').setValue('')
+      }
+    })
   }
 
 }

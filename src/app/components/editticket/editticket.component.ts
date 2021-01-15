@@ -83,11 +83,29 @@ export class EditticketComponent implements OnInit {
   }
 
   public submitForm(prmts) {
-    console.log(prmts)
+    //console.log(prmts)
+    var isOk: boolean = true
     var tkt = {id: prmts.id, airline: this.ticket.airline, oneWay: prmts.oneWay, departOn: prmts.departOn, returnOn: prmts.returnOn, flight: this.ticket.flight, count: prmts.count};
-    this.ticketService.updateTicket(tkt).subscribe(data => {
-      this.router.navigate([''])
-    })
+    if ((prmts.oneWay as boolean === false) && (prmts.returnOn === null)) {
+      alert('PLESE ADD RETURN DATE')
+      isOk = false
+    }
+
+    if (prmts.oneWay as boolean) {
+      tkt.returnOn = null
+    }
+
+    if (prmts.returnOn < prmts.departOn) {
+      alert('DATE ERROR')
+      isOk = false
+    }
+    
+    if (isOk){
+      this.ticketService.updateTicket(tkt).subscribe(data => {
+        this.router.navigate([''])
+      })
+    }
+    
   }
 
 }
