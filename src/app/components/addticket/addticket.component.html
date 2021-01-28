@@ -1,0 +1,63 @@
+<div class="content">
+    <h5>Add New Ticket:</h5>
+    <div class="login-container">
+        <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <select class="form-control" formControlName="airline" class="browser-default custom-select">
+                        <option value="" disabled selected hidden>Please Choose...</option>
+                        <option *ngFor="let airline of airlines" [ng-value]="airline">
+                            {{airline.name}}
+                        </option>
+                    </select>
+                    <div class="text-danger error-message" *ngIf="airline.errors?.required"> Airline is required! </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="radio" id="owt" [value]="true" class="form-control" formControlName="oneWay">
+                    <label for="owt">One Way Ticket</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="radio" id="rt" [value]="false" class="form-control" formControlName="oneWay">
+                    <label for="rt">Return Ticket</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="date" class="form-control" placeholder="Enter departure date:" formControlName="departOn">
+                    <div class="text-danger error-message" *ngIf="departOn.errors?.required"> Departure date is required! </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="date" class="form-control" placeholder="Enter return date:" formControlName="returnOn">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <select class="form-control" formControlName="flight" class="browser-default custom-select">
+                        <option value="" disabled selected hidden>Please Choose...</option>
+                        <option *ngFor="let flight of flights" [ng-value]="flight">
+                            {{flight.origin.name}} -> {{flight.destination.name}}
+                        </option>
+                    </select>
+                    <div class="text-danger error-message" *ngIf="flight.errors?.required"> Flight is required! </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="number" class="form-control" placeholder="Enter ticket count:" formControlName="count">
+                    <div class="text-danger error-message" *ngIf="count.errors?.required"> Count is required! </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-outline-primary" [disabled]="!editForm.valid">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

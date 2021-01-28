@@ -11,7 +11,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <input disabled type="text" [(ngModel)]="ticket.airline.name" class="form-control" formControlName="airline">
+                    <!--<input disabled type="text" [(ngModel)]="ticket.airline.name" class="form-control" formControlName="airline">-->
+                    <select [(ngModel)]="curAirline.name" class="form-control" formControlName="airline" class="browser-default custom-select">
+                        <option *ngFor="let airline of airlines" [ng-value]="airline" [selected]="airline.name == curAirline.name">
+                            {{airline.name}}
+                        </option>
+                    </select>
+                    <div class="text-danger error-message" *ngIf="airline.errors?.required"> Airline is required! </div>
                 </div>
             </div>
             <div class="row">
@@ -45,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Submit</button>
                     <button type="submit" class="btn btn-danger" routerLink="">Cancel</button>
                 </div>
             </div>

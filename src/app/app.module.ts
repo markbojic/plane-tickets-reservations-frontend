@@ -21,6 +21,7 @@ import { NewairlineComponent } from './components/newairline/newairline.componen
 import { EditairlineComponent } from './components/editairline/editairline.component';
 import { AirlineinfoComponent } from './components/airlineinfo/airlineinfo.component';
 import { AirlineticketsComponent } from './components/airlinetickets/airlinetickets.component';
+import { AddticketComponent } from './components/addticket/addticket.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AirlineticketsComponent } from './components/airlinetickets/airlinetick
     NewairlineComponent,
     EditairlineComponent,
     AirlineinfoComponent,
-    AirlineticketsComponent
+    AirlineticketsComponent,
+    AddticketComponent
   ],
   imports: [
     BrowserModule,
