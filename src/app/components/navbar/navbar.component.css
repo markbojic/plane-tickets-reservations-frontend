@@ -94,3 +94,17 @@
 	}
 
 }
+
+.fa-plane:after{
+	content:attr(value);
+	font-size:12px;
+	font-weight: bold;
+	color: white;
+	background: #202020af;
+	border-radius:50%;
+	padding:3px;
+	position:relative;
+	left:-4px;
+	top:-10px;
+	opacity:0.9;
+	}
