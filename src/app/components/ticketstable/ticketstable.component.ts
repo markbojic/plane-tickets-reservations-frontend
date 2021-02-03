@@ -65,6 +65,19 @@ export class TicketstableComponent implements OnInit {
     })
   }
 
+  public findTickets() {
+    let or = (document.getElementById("from") as HTMLInputElement).value;
+    let de = (document.getElementById("to") as HTMLInputElement).value;
+    let depOn = (document.getElementById("input-start") as HTMLInputElement).value;
+    let retOn = (document.getElementById("input-end") as HTMLInputElement).value;
+
+    let prmts = {origin: or, destination: de, departOn: depOn, returnOn: retOn}
+    //console.log(prmts);
+    this.ticketService.findTickets(prmts).subscribe(tickets => {
+      this.tickets = tickets
+    })
+  }
+
   public rsrv(id) {
     alert('YOU RESERVED TICKET')
   }

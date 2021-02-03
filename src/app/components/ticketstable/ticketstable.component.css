@@ -1,0 +1,82 @@
+.container {
+    margin-left: 30px;
+}
+
+.card-body {
+    padding: 0 20px;
+}
+
+.label {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 700;
+}
+
+.input--style-1 {
+    min-width: 150px;
+    max-width: 150px;
+    font-size: 18px;
+    padding: 5px 0;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+}
+
+.input--style-2 {
+    min-width: 160px;
+    max-width: 160px;
+    font-size: 18px;
+    padding: 5px 0;
+    color: #555555;
+}
+
+input {
+    border-width:0px;
+    border:none;
+}
+  
+.input--style-1::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #555555;
+}
+  
+.input--style-1::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #555555;
+    opacity: 1;
+}
+  
+.input--style-1:-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #555555;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 23px;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    padding: 16px 16px;
+    padding-bottom: 10px;
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    float: left;
+    margin-right: 10px;
+    min-width: 180px;
+    max-width: 180px;
+}
+  
+.form::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.mybtn {
+    display: inline-block;
+    line-height: 77px;
+    min-width: 77px;
+}

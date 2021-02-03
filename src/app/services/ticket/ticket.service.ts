@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ticket } from '../../models/ticket.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -53,6 +53,19 @@ export class TicketService {
         'Content-Type': 'application/json'
       }
     })
+  }
+
+  public findTickets(prmts): Observable<Ticket[]> {
+    console.log(prmts)
+    let params = new HttpParams().set("origin", prmts.origin).set("destination", prmts.destination).set("departOn", prmts.departOn).set("returnOn", prmts.returnOn)
+    this.tickets = this.http.get<Ticket[]>(this.ticketsUrl + '/search', {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt")
+      },
+      params: params
+    })
+
+    return this.tickets
   }
 
 }
