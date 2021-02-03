@@ -35,11 +35,11 @@ export class AirlineticketsComponent implements OnInit {
       this.airlineService.fatchAirlines().subscribe((airlines: Airline[]) => {
         console.log(airlines)
         this.activeAirline = airlines.filter(airline => airline.id === id)[0]
-      })
-    })
 
-    this.ticketService.fetchTickets().subscribe(tickets => {
-      this.tickets = tickets.filter(ticket => ticket.airline.id === this.activeAirline.id);
+        this.ticketService.fetchAllTickets().subscribe(tickets => {
+          this.tickets = tickets.filter(ticket => ticket.airline.id === this.activeAirline.id);
+        })
+      })
     })
 
     this.userService.fetchUsers().subscribe(users => {
@@ -53,21 +53,21 @@ export class AirlineticketsComponent implements OnInit {
   }
 
   public filterOneWay() {
-    this.ticketService.fetchTickets().subscribe(tickets => {
+    this.ticketService.fetchAllTickets().subscribe(tickets => {
       this.tmp = tickets.filter(ticket => ticket.oneWay);
       this.tickets = this.tmp.filter(ticket => ticket.airline.id === this.activeAirline.id);
     });
   }
 
   public filterReturn() {
-    this.ticketService.fetchTickets().subscribe((tickets: Ticket[]) => {
+    this.ticketService.fetchAllTickets().subscribe((tickets: Ticket[]) => {
       this.tmp = tickets.filter(ticket => !(ticket.oneWay));
       this.tickets = this.tmp.filter(ticket => ticket.airline.id === this.activeAirline.id);
     });
   }
 
   public filterAll() {
-    this.ticketService.fetchTickets().subscribe(tickets => {
+    this.ticketService.fetchAllTickets().subscribe(tickets => {
       this.tickets = tickets.filter(ticket => ticket.airline.id === this.activeAirline.id);
     })
   }
