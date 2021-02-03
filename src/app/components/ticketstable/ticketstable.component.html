@@ -91,7 +91,7 @@
         </table>
     </div>
     <div>
-        <button class="btn move" (click)="previousPage()">Prev</button>
-        <button class="btn move" (click)="nextPage()">Next</button>
+        <button class="btn move" (click)="previousPage()" [disabled]="currPage === 1">Prev</button>
+        <button class="btn move" (click)="nextPage()" [disabled]="maxPages === currPage-1">Next</button>
     </div>
 </div>
